@@ -169,5 +169,5 @@ class Model(BaseModel):
         }
         return sess.run(to_return, feed_dict)
 
-    def get_output_names(self):
+    def get_output_names(self, domain=None):
         return ['loss', 'loss_rec', 'loss_adv', 'loss_d0', 'loss_d1']
