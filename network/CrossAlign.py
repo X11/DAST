@@ -155,7 +155,7 @@ class Model(BaseModel):
         results = {**results1, **results2}
         accumulator.add([results[name] for name in accumulator.names])
 
-    def run_eval_step(self, sess, batch):
+    def run_eval_step(self, sess, batch, domain = None):
         feed_dict = self._make_feed_dict(batch, mode = 'eval')
 
         to_return = {
