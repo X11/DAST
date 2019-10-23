@@ -199,8 +199,8 @@ if __name__ == '__main__':
             iter_len = max(source_len, target_len)
             for i in range(iter_len):
                 model.run_train_step(sess, 
-                    target_batches[i % target_len], source_batches[i % source_len], accumulator, epoch)
-
+#                    target_batches[i % target_len], source_batches[i % source_len], accumulator, epoch)
+                     target_batches[i % target_len], accumulator, epoch)
                 step += 1
                 write_dict['step'] = step
                 if step % args.train_checkpoint_step == 0:
