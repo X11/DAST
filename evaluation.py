@@ -13,7 +13,7 @@ from utils import *
 from vocab import Vocabulary
 from config import load_arguments
 
-folder_path = 'samples/imdb_amazon/finetune/*.txt'
+folder_path = 'samples/idmb_yelp/finetune/*.txt'
 
 args = load_arguments()
 args.batch_size = 50
