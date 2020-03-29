@@ -83,6 +83,7 @@ class CNN_Model(object):
         feed_dict[self.label] = batch.labels
         feed_dict[self.enc_lens] = batch.enc_lens
         feed_dict[self.dropout] = 0.5
+        print('FD', feed_dict)
         return feed_dict
 
     def _make_test_feed_dict(self, batch):

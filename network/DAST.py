@@ -84,6 +84,7 @@ class Model(BaseModel):
         self.optimize_rec = opt.minimize(self.loss_rec, var_list=theta_eg)
         self.optimize_d = opt.minimize(self.loss_d, var_list=theta_d)
 
+        self.saver = tf.train.Saver(max_to_keep=5)
 
     def style_transfer_model(self, args, enc_input_ids, domain_vector,
         dec_input_ids, targets, dec_mask, labels, enc_lens, scope = None):
@@ -230,6 +231,8 @@ class Model(BaseModel):
                 'sd_loss_rec': self.sd_loss_rec,
                 'sd_loss_g': self.sd_loss_g,
                 'sd_loss_d': self.sd_loss_d,
+                'enc_inputs': self.sd_enc_inputs,
+                'targets': self.sd_targets
             }
         elif domain == 'target':
             feed_dict = self._make_feed_dict(batch, None, mode = 'eval')
@@ -240,6 +243,8 @@ class Model(BaseModel):
                 'td_loss_rec': self.td_loss_rec,
                 'td_loss_g': self.td_loss_g,
                 'td_loss_d': self.td_loss_d,
+                'enc_inputs': self.td_enc_inputs,
+                'targets': self.td_targets
             }
         else:
             raise ValueError('Wrong domain name: %s.' % domain)

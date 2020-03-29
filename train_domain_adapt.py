@@ -99,6 +99,7 @@ def evaluation(sess, args, batches, model,
 
 
 def create_model(sess, args, vocab):
+    print('NNN', args.network)
     model = eval('network.' + args.network + '.Model')(args, vocab)
     if args.load_model:
         logger.info('-----Loading styler model from: %s.-----' % os.path.join(args.styler_path, 'model'))

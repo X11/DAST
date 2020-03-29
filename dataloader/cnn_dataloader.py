@@ -47,7 +47,7 @@ class Batch(object):
 
   def init_encoder_seq(self, example_list, hps):
 
-    #print (example_list)
+    # print('EL', example_list)
 
     #max_enc_seq_len = max(ex.enc_len for ex in example_list)
     for ex in example_list:
