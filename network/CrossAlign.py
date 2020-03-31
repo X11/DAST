@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from network.nn import *
 from network.BaseModel import BaseModel

@@ -5,7 +5,7 @@ import codecs
 import json
 import glob
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 class Example(object):
   """Class representing a train/val/test example for text summarization."""

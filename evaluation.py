@@ -3,7 +3,7 @@ import sys
 import argparse
 
 import glob
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from nltk.translate.bleu_score import corpus_bleu, sentence_bleu, SmoothingFunction
 
 smoothie = SmoothingFunction().method1

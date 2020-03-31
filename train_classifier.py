@@ -4,7 +4,7 @@ import time
 import random
 
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 import network
 from config import load_arguments
