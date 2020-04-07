@@ -1,4 +1,4 @@
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 
 from network.nn import *
 from network.ControlGen import Model as BaseModel
@@ -85,6 +85,7 @@ class Model(BaseModel):
         self.optimize_d = opt.minimize(self.loss_d, var_list=theta_d)
 
         self.saver = tf.train.Saver(max_to_keep=5)
+
 
     def style_transfer_model(self, args, enc_input_ids, domain_vector,
         dec_input_ids, targets, dec_mask, labels, enc_lens, scope = None):

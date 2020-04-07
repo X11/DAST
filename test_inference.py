@@ -14,14 +14,15 @@ def create_model(sess, args, vocab):
   model = eval('network.' + args.network + '.Model')(args, vocab)
   if args.load_model:
     logger.info('-----Loading styler model from: %s.-----' % os.path.join(args.styler_path, 'model'))
-    model.saver.restore(sess, os.path.join(args.styler_path, 'model'))
+    model.saver.restore(sess, os.path.join(args.styler_path, 'model').replace('\\', '/'))
   return model
 
 if __name__ == '__main__':
   args = load_arguments()
 
   # sentence = "The food at the burger joint was disgusting and staff was impolite"
-  sentence = "The first thing I loved about this movie was that it was the most character driven film in the MCU till date"
+  # sentence = "The first thing I loved about this movie was that it was the most character driven film in the MCU till date"
+  sentence = "Ever since joes has changed hands it's gotten better and better ."
 
   if not os.path.isfile(args.multi_vocab):
     build_unify_vocab([args.target_train_path, args.source_train_path], args.multi_vocab)

@@ -41,7 +41,7 @@ class CNN_Model(object):
         # optimizer
         self.optimizer = tf.train.AdamOptimizer(self.learning_rate)
         self.train_op = self.optimizer.minimize(self.loss, self.global_step)
-        self.params = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=os.path.join(scope, 'classifer'))
+        self.params = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=os.path.join(scope, 'classifer').replace('\\','/'))
         self.saver = tf.train.Saver(self.params)
 
     def leaky_relu(self, x, alpha=0.01):
