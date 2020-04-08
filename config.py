@@ -22,6 +22,9 @@ def load_arguments():
     argparser.add_argument('--logDir',
             type=str,
             default='')
+    argparser.add_argument('--modelDirName',
+            type=str,
+            default='save_model')
 
     # general model setting
     argparser.add_argument('--learning_rate',
@@ -120,6 +123,7 @@ def load_arguments():
             type=float,
             default=1.0)
 
+
     # Multi-dataset support
     argparser.add_argument('--domain_adapt',
             action='store_true',
@@ -162,7 +166,7 @@ def load_arguments():
         args.vocab = os.path.join(data_root, 'vocab')
 
         # update output path
-        args.modelDir = os.path.join(args.modelDir, 'save_model')
+        args.modelDir = os.path.join(args.modelDir, args.modelDirName)
         args.classifier_path = os.path.join(args.modelDir, 'classifier', args.dataset)
         args.lm_path = os.path.join(args.modelDir, 'lm', args.dataset)
         args.styler_path = os.path.join(args.modelDir, 'styler')
@@ -227,7 +231,7 @@ def update_domain_adapt_datapath(args):
         args.dataDir, '_'.join([args.source_dataset, args.dataset, 'multi_vocab']))
 
     # update output path
-    args.modelDir = os.path.join(args.modelDir, 'save_model')
+    args.modelDir = os.path.join(args.modelDir, args.modelDirName)
     args.target_classifier_path = os.path.join(args.modelDir, 'classifier', args.dataset)
     args.source_classifier_path = os.path.join(args.modelDir, 'classifier', args.source_dataset)
     args.domain_classifier_path = os.path.join(
